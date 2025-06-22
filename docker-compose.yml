@@ -1,0 +1,22 @@
+services:
+  ros2:
+    build:
+      context: .
+    image: ros2-humble-dev
+    container_name: ros2_humble
+    network_mode: "host"
+
+    volumes:
+      - ./ros2_ws:/home/stephen/ros2_ws:z
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw,z
+      - ${XAUTHORITY}:${XAUTHORITY}:rw,z
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=${XAUTHORITY}
+      - QT_X11_NO_MITSHM=1
+
+    privileged: true                                    # Needed for full GPU access
+    stdin_open: true
+    tty: true
+
