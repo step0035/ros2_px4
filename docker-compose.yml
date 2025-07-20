@@ -2,6 +2,7 @@ services:
   ros2:
     build:
       context: .
+      dockerfile: Dockerfile
     image: ros2-humble-dev
     container_name: ros2_humble
     network_mode: "host"

@@ -25,5 +25,5 @@ WORKDIR /home/stephen/ros2_ws
 # Source ROS on shell start
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/stephen/.bashrc
 
-CMD ["bash"]
+ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && exec bash"]
 
